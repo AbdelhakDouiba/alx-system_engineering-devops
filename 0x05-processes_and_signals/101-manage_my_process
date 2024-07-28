@@ -22,10 +22,10 @@ case "$1" in
 		echo "manage_my_process started"
 		;;
 	stop)
-		[[ -e /var/run/my_process.pid ]] && kill $(cat /var/run/my_process.pid) && sudo rm /var/run/my_process.pid && echo "manage_my_process stopped"
+		[[ -e /var/run/my_process.pid ]] && kill "$(cat /var/run/my_process.pid)" && sudo rm /var/run/my_process.pid && echo "manage_my_process stopped"
 		;;
 	restart)
-		[[ -e /var/run/my_process.pid ]] && kill $(cat /var/run/my_process.pid) && sudo rm /var/run/my_process.p    id
+		[[ -e /var/run/my_process.pid ]] && kill "$(cat /var/run/my_process.pid)" && sudo rm /var/run/my_process.p    id
 		./manage_my_process &
 		echo $! > /var/run/my_process.pid
 		echo "manage_my_process restarted"
