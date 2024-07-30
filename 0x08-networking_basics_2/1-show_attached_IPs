@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#displays all active IPv4 IPs on the machine it’s executed on
+sockets=$(netstat -n4 | tail -n +3 | tr -s '[:blank:]' ' ')
+IFS="\n"
+for socket in "$sockets"
+do
+	ip=$(echo $socket | cut -d " " -f4 | cut -d ":" -f1)
+	echo "$ip"
+done
